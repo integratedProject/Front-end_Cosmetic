@@ -1,5 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '@/views/Home.vue'
+import Brands from '@/views/Brands.vue'
+import MakeupTypes from '@/views/Makeup-types.vue'
+import Lipstick from '@/views/Lipstick.vue'
+import Blush from '@/views/Blush.vue'
+import EyeShadow from '@/views/Eye-shadow.vue'
+import Cart from '@/views/Cart.vue'
+import AddProduct from '@/views/Add-product.vue'
+import Employees from '@/views/Employees.vue'
+
 
 const routes = [
   {
@@ -8,13 +17,48 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/brands',
+    name: 'Brands',
+    component:Brands
+  },
+  {
+    path: '/makeup-types',
+    name: 'Makeup-types',
+    component:MakeupTypes
+  },
+  {
+    path: '/lipstick',
+    name: 'Lipstick',
+    component:Lipstick
+  },
+  {
+    path: '/blush',
+    name: 'Blush',
+    component:Blush
+  },
+  {
+    path: '/eye-shadow',
+    name: 'Eye-shadow',
+    component:EyeShadow
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component:Cart
+  },
+  {
+    path: '/add-product',
+    name: 'Add-product',
+    component:AddProduct
+  },
+  {
+    path: '/employees',
+    name: 'Employees',
+    component:Employees
+  },
+  
+  
+
 ]
 
 const router = createRouter({
