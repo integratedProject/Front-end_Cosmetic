@@ -1,0 +1,16 @@
+{
+  "Brand": [
+    {
+      "BrandId": "B01",
+      "BrandName": "CHANEL"
+    },
+    {
+      "BrandId": "B02",
+      "BrandName": "DIOR"
+    },
+    {
+      "BrandId": "B01",
+      "BrandName": "NARS"
+    }
+  ]
+}

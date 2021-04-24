@@ -1,5 +1,5 @@
 <template>
-  <div id="nav" class="sticky top-0  m-5 p-10 ">
+  <div id="nav" class="sticky top-0  m-5 p-10   ">
     <div class="border-b-2 border-black mx-40 mb-10 ">
       <span class="text-3xl">COSMETIC</span>
     </div>  
