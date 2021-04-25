@@ -1,16 +1,56 @@
 {
-  "Brand": [
+  "brand": [
     {
-      "BrandId": "B01",
-      "BrandName": "CHANEL"
+      "brandid": "B01",
+      "brandname": "CHANEL"
     },
     {
-      "BrandId": "B02",
-      "BrandName": "DIOR"
+      "brandid": "B02",
+      "brandname": "DIOR"
     },
     {
-      "BrandId": "B01",
-      "BrandName": "NARS"
+      "brandid": "B01",
+      "brandname": "NARS"
     }
+  ],
+  "color":[
+    {
+      "colorid":"C01",
+      "colorname":"Red"
+    }
+
   ]
+  ,
+  "product": [
+    {
+      "productid": "DI01",
+      "productname": "Rouge Dior",
+      "productimage": "https://www.dior.com/beauty/version-5.1610097138806/resize-image/ep/460/498/90/0/%252FY0172009%252FV007%252FY0172009_C017500999_E01_GHC.jpg?imwidth=460",
+      "price": "1750.00",
+      "launch_date": "20/02/1997",
+      "description": "Rouge Dior is the Dior lipstick with couture colors. True floral lip care, it is enriched with red peony and pomegranate flower extracts of natural origin. Rouge Dior dresses the lips in 75 bold colors with satin, matte, metallic or velvet finishes. Long-wear lipstick that ensures 16 hours of comfort* on the lips.",
+      "brand_brandid": "B02"
+    },
+    {
+      "productid": "CB02",
+      "productname": "Palette essentielle été",
+      "productimage": "https://www.chanel.com/images//t_one//w_0.43,h_0.43,c_crop/q_auto:good,f_jpg,fl_lossy,dpr_1.2/w_620/palette-essentielle-ete-highlight-color-190-eclat-solaire-0-31oz--packshot-default-149190-8835355574302.jpg",
+      "price": "2550.00",
+      "launch_date": "23/06/2020",
+      "description": "PALETTE ESSENTIELLE HIGHLIGHT CREAM FOR SUMMER. Two in one value of a cream highlighter for the face and to add color with just the tip of the brush. The perfect match of three colors for easy makeup application at any time of the day. Both highlighter creams that fill light-prone areas of the face. With a bright red to highlight the cheekbones or as a lip tint. So your skin looks vibrant again and your face looks radiant. Sparkling, brimming with beauty",
+      "brand_brandid": "B01"
+    },
+    {
+      "productid": "NE03",
+      "productname": "The orgasm bundle",
+      "productimage": "https://www.chanel.com/images//t_one//w_0.43,h_0.43,c_crop/q_auto:good,f_jpg,fl_lossy,dpr_1.2/w_620/palette-essentielle-ete-highlight-color-190-eclat-solaire-0-31oz--packshot-default-149190-8835355574302.jpg",
+      "price": "2550.00",
+      "launch_date": "23/06/2020",
+      "description": "PALETTE ESSENTIELLE HIGHLIGHT CREAM FOR SUMMER. Two in one value of a cream highlighter for the face and to add color with just the tip of the brush. The perfect match of three colors for easy makeup application at any time of the day. Both highlighter creams that fill light-prone areas of the face. With a bright red to highlight the cheekbones or as a lip tint. So your skin looks vibrant again and your face looks radiant. Sparkling, brimming with beauty",
+      "brand_brandid": "B01"
+    }
+    
+   
+  ]
+  
 }
