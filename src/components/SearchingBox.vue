@@ -1,13 +1,13 @@
 <template>
   <div id="searchingBox">
     <form>
-      <div class="flex justify-around rounded-full p-2 border-2 border-black">
+      <div class="flex justify-around rounded-full p-2 border-2 border-black hover:border-gray-600">
         <input
           type="text"
           id="searching"
           v-model="searchInput"
           placeholder="  What are you looking for ?"
-          class="w-4/5 focus:outline-none px-2 "
+          class="w-4/5 focus:outline-none px-2 text-sm "
         />
         
           <button v-if="isSearching" type="button" class="w-8 mx-1 ">
