@@ -13,5 +13,7 @@
 ## 62130500079 Wanisara Khamracha<br>
 
 ### Complete
-
+- Create Docker file and docker-compose.yml
+- Deploy on web
+- Create bridge network to 3 containers
 ### In progress
