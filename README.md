@@ -1,25 +1,16 @@
-# integrated-pj
+# Role Font-end<br>
+## 62130500083 Warathaya Rattachai<br>
 
-## Project setup
-```
-npm install
-```
+### Complate
+- Design web page in figma<br>
+- 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### In progress
+- 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+# Role Dev-Ops<br>
+## 62130500079 Wanisara Khamracha<br>
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Complete
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-"# int220_020_079_083" 
+### In progress
