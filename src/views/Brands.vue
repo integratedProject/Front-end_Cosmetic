@@ -1,5 +1,63 @@
 <template>
-  <div class="about">
-    <h1>This is an Brands view</h1>
+  <div id="brands">
+    <router-link to="/add-product" class="btn">
+      <span class="font-bold">ADD NEW PRODUCT</span>
+    </router-link>
+    <div>
+      <div class="grid grid-cols-3 text-2xl pt-10">
+        <img src="@/assets/logo/logo-chanel.png" />
+
+        <img src="@/assets/logo/logo-dior.png" />
+
+        <img src="@/assets/logo/logo-nars.png" />
+
+        <!-- see more btn  -->
+        <brand class="px-32 hover:border-gray-600"></brand>
+        <brand class="px-32 hover:border-gray-600"></brand>
+        <brand class="px-32 hover:border-gray-600"></brand>
+      </div>
+    </div>
+    <!-- <div class="grid grid-cols-3 text-2xl">
+      <ul v-for="item in brand" :key="item.brandid">
+        <div
+          class="p-10 m-20 border-2 border-black hover:bg-gray-300 duration-300 focus:outline-none"
+        >
+          <li>
+            <button>{{ item.brandname }}</button>
+          </li>
+        </div>
+      </ul>
+    </div> -->
   </div>
 </template>
+<script>
+import Brand from "@/components/Brand.vue";
+
+export default {
+  name: "Brands",
+  components: {
+    Brand,
+  },
+
+  data() {
+    return {
+      brand: [],
+    };
+  },
+  methods: {
+    //   async fetchBrands() {
+    //     try {
+    //       console.log("fetch");
+    //       const res = await fetch("http://localhost:5000/brand");
+    //       const data = await res.json();
+    //       this.brand = data;
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   },
+    // },
+    // mounted() {
+    //   this.fetchBrands();
+  },
+};
+</script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="px-10 text-lg">
+  <div class=" text-lg">
     <!-- navigationBar -->
     <div
       id="nav"
@@ -33,18 +33,6 @@
         <searching-box></searching-box>
       </div>
     </div>
-    <!-- Banner -->
-    <div class="mx-auto box-content h-5/6 w-5/6 ">
-      <vueper-slides>
-        <vueper-slide
-          v-for="(slide, i) in slides"
-          :key="i"
-          :image="slide.src"
-        />
-      </vueper-slides>
-
-      <about></about>
-    </div>
   </div>
 
   <router-view />
@@ -55,6 +43,8 @@
   font-family: Javanese Text;
   text-align: center;
   color: black;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 #nav.scrolled {
@@ -64,41 +54,31 @@
 #titleName {
   margin-bottom: 2.5rem;
 }
+.btn {
+  border-color: black;
+  border-width: 2px;
+  border-radius: 9999px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.btn:hover{
+  transition-duration: 300ms;
+  color:white;
+  background-color:  rgb(209, 213, 219);
+}
 </style>
 <script>
 import searchingBox from "@/components/SearchingBox.vue";
-import about from "@/components/About.vue";
-import { VueperSlides, VueperSlide } from "vueperslides";
-import "vueperslides/dist/vueperslides.css";
 
 export default {
   name: "App",
   components: {
     searchingBox,
-    about,
-    VueperSlides,
-    VueperSlide,
   },
   data() {
     return {
-      slides: [
-        {
-          id: "slide-1",
-          src:
-            "https://www.dior.com/couture/var/dior/storage/images/horizon/make-up/lips/lipstick/lipsticks/14203531-93-int-EN/lipsticks_1440_1200.jpg",
-        },
-        {
-          id: "slide-2",
-          src:
-            "https://www.dior.com/couture/var/dior/storage/images/14208007/26-int-EN/eyeshadows2_1440_1200.jpg",
-        },
-        {
-          id: "slide-3",
-          src:
-            "https://www.dior.com/couture/var/dior/storage/images/14214663/27-int-EN/highlighter-luminizer2_1440_1200.jpg",
-        },
-      ],
-
       view: {
         atTopOfPage: true,
       },

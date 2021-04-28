@@ -8,7 +8,7 @@ import EyeShadow from '@/views/Eye-shadow.vue'
 import Cart from '@/views/Cart.vue'
 import AddProduct from '@/views/Add-product.vue'
 import Employees from '@/views/Employees.vue'
-
+import ErrorPage from '@/views/Error-page.vue'
 
 const routes = [
   {
@@ -56,8 +56,11 @@ const routes = [
     name: 'Employees',
     component:Employees
   },
-  
-  
+  {
+    path: '/:catchNotMatchPath(.*)',
+    name: 'Error-page',
+    component: ErrorPage
+  }
 
 ]
 

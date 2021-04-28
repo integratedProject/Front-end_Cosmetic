@@ -1,7 +1,7 @@
 <template>
   <div class="p-5 grid grid-cols-2 ">
     <div>
-      <img src="@/assets/about1.png" />
+      <img src="@/assets/aboutPage/about1.png" />
     </div>
     <div class="my-20">
       <span
@@ -36,12 +36,12 @@
       </span>
     </div>
     <div class="w-3/4 mx-auto">
-      <img src="@/assets/about2.jpg" />
+      <img src="@/assets/aboutPage/about2.jpg" />
     </div>
   </div>
   <div class="p-5 grid grid-cols-3 ">
     <div class="col-span-2 px-5">
-      <img src="@/assets/about3.jpg" />
+      <img src="@/assets/aboutPage/about3.jpg" />
     </div>
     <div>
       <span
