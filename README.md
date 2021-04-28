@@ -3,10 +3,11 @@
 
 ### Complate
 - Design web page in figma<br>
-- 
+- Homepage & navbar
+- Brand page
 
 ### In progress
-- 
+- [Redo] banner slide
 
 # Role Dev-Ops<br>
 ## 62130500079 Wanisara Khamracha<br>
