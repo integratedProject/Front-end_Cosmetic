@@ -1,12 +1,12 @@
 <template>
   <div id="brands">
-    <router-link to="/add-product" class="btn">
-      <span class="font-bold">ADD NEW PRODUCT</span>
-    </router-link>
+    <searching-box></searching-box>
+  
     <div>
       <div class="grid grid-cols-3 text-2xl pt-10">
+        <router-link to="/makeup-types">
         <img src="@/assets/logo/logo-chanel.jpg" />
-
+</router-link>
         <img src="@/assets/logo/logo-dior.jpg" />
 
         <img src="@/assets/logo/logo-nars.jpg" />
@@ -17,6 +17,7 @@
         <brand class="px-32 hover:border-gray-600"></brand>
       </div>
     </div>
+    <add-product ></add-product>
     <!-- <div class="grid grid-cols-3 text-2xl">
       <ul v-for="item in brand" :key="item.brandid">
         <div
@@ -32,11 +33,14 @@
 </template>
 <script>
 import Brand from "@/components/Brand.vue";
+import AddProduct from "@/components/AddProduct.vue";
 
 export default {
   name: "Brands",
   components: {
     Brand,
+    AddProduct
+
   },
 
   data() {

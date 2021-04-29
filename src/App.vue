@@ -1,5 +1,5 @@
 <template>
-  <div class="app text-lg">
+  <div id="app" class=" text-lg">
     <!-- navigationBar -->
     <div
       id="nav"
@@ -30,15 +30,16 @@
           class=" border-b border-black border-opacity-0 px-2 hover:border-opacity-100 hover:text-gray-600"
           >EMPLOYEES</router-link
         >
-        <searching-box></searching-box>
+      
        
       </div>
       
     </div>
-     <home></home>
-  </div>
 
   <router-view />
+     
+  </div>
+
 </template>
 
 <style>
@@ -73,15 +74,12 @@
 }
 </style>
 <script>
-import searchingBox from "@/components/SearchingBox.vue";
-import home from '@/views/Home.vue';
+
+
 
 export default {
   name: "App",
-  components: {
-    searchingBox,
-    home
-  },
+
   data() {
     return {
       view: {

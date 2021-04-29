@@ -1,5 +1,5 @@
 <template>
-  <div class="box-border">
+  <div id="home" class="box-border">
     <!-- Banner -->
 
     <div class="slideshow-container max-w-full relative m-auto px-40">
@@ -59,6 +59,7 @@ export default {
     };
   },
   methods: {
+   
     plusSlides(index) {
       this.showSlides((this.slideIndex += index));
     },
