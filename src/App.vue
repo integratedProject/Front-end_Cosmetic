@@ -1,5 +1,5 @@
 <template>
-  <div class=" text-lg">
+  <div class="app text-lg">
     <!-- navigationBar -->
     <div
       id="nav"
@@ -31,8 +31,11 @@
           >EMPLOYEES</router-link
         >
         <searching-box></searching-box>
+       
       </div>
+      
     </div>
+     <home></home>
   </div>
 
   <router-view />
@@ -71,11 +74,13 @@
 </style>
 <script>
 import searchingBox from "@/components/SearchingBox.vue";
+import home from '@/views/Home.vue';
 
 export default {
   name: "App",
   components: {
     searchingBox,
+    home
   },
   data() {
     return {

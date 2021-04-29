@@ -2,21 +2,38 @@
   <div class="box-border">
     <!-- Banner -->
 
-    <div class="slideshow-container">
+    <div class="slideshow-container max-w-full relative m-auto px-40">
       <div class="mySlides fade" v-for="(slide, index) in slides" :key="index">
-        <img :src="slide" class="w-full" />
+        <img :src="slide" class="w-full align-middle" />
       </div>
-      <div class="flex justify-between">
-        <a class="prev" @click="plusSlides(-1)">&lt;</a>
-        <a class="next" @click="plusSlides(1)">&gt;</a>
+      <div class="flex justify-between text-white font-bold">
+        <a
+          class="prev cursor-pointer absolute top-1/2 w-auto hover:bg-black "
+          @click="plusSlides(-1)"
+          >&lt;</a
+        >
+        <a
+          class="next cursor-pointer absolute top-1/2 w-auto right-0  hover:bg-black "
+          @click="plusSlides(1)"
+          >&gt;</a
+        >
       </div>
     </div>
     <br />
 
     <div style="text-align:center">
-      <span class="dot" @click="currentSlide(1)"></span>
-      <span class="dot" @click="currentSlide(2)"></span>
-      <span class="dot" @click="currentSlide(3)"></span>
+      <span
+        class="dot cursor-pointer w-3 h-3 bg-gray-300 rounded-2xl inline-block hover:bg-gray-500"
+        @click="currentSlide(1)"
+      ></span>
+      <span
+        class="dot cursor-pointer w-3 h-3 bg-gray-300 rounded-2xl inline-block hover:bg-gray-500"
+        @click="currentSlide(2)"
+      ></span>
+      <span
+        class="dot cursor-pointer w-3 h-3 bg-gray-300 rounded-2xl inline-block hover:bg-gray-500"
+        @click="currentSlide(3)"
+      ></span>
     </div>
 
     <about></about>
@@ -77,36 +94,14 @@ export default {
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
-
 .mySlides {
   display: none;
 }
-img {
-  vertical-align: middle;
-}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
 /* Next & previous buttons */
 .prev,
 .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
   padding: 16px;
   margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
@@ -114,51 +109,14 @@ img {
 
 /* Position the "next button" to the right */
 .next {
-  right: 0;
+
   border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
 }
 
 /* The dots/bullets/indicators */
 .dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
   margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
   transition: background-color 0.6s ease;
-}
-
-.active,
-.dot:hover {
-  background-color: #717171;
 }
 
 /* Fading animation */

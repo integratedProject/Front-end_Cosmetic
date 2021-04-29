@@ -5,11 +5,11 @@
     </router-link>
     <div>
       <div class="grid grid-cols-3 text-2xl pt-10">
-        <img src="@/assets/logo/logo-chanel.png" />
+        <img src="@/assets/logo/logo-chanel.jpg" />
 
-        <img src="@/assets/logo/logo-dior.png" />
+        <img src="@/assets/logo/logo-dior.jpg" />
 
-        <img src="@/assets/logo/logo-nars.png" />
+        <img src="@/assets/logo/logo-nars.jpg" />
 
         <!-- see more btn  -->
         <brand class="px-32 hover:border-gray-600"></brand>
