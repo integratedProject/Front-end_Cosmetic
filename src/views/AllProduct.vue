@@ -1,9 +1,30 @@
 <template>
   <div id="AllProduct">
-    <div
-      class="border-2 border-black px-10 py-5  w-1/6 mx-auto "
-    >
+    <div class="border-2 border-black px-10 py-5  w-1/6 mx-auto ">
       ALL PRODUCT
+    </div>
+    <div id="filter" class="flex justify-between">
+      <div>
+        1xx products
+      </div>
+      <div>
+        Sort by:
+        <ul>
+          <li>
+            <input type="checkbox" id="HighToLow" v-model="HighToLow" />
+            <label for="HighToLow">Price High to Low</label>
+          </li>
+           <li>
+            <input type="checkbox" id="LowToHigh" v-model="HighToLow" />
+            <label for="LowToHigh">Price Low to High</label>
+          </li>
+          <li>
+            <input type="checkbox" id="New" v-model="New" />
+            <label for="New">New Arrival</label>
+          </li>
+        </ul>
+
+      </div>
     </div>
 
     <div class="grid grid-cols-3 text-2xl">

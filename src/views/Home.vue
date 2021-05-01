@@ -5,14 +5,14 @@
       <div class="mySlides fade" v-for="(slide, index) in slides" :key="index">
         <img :src="slide" class="w-full align-middle" />
       </div>
-      <div class="flex justify-between text-white font-bold">
+      <div class="text-white font-bold  w-full transform -translate-y-60">
         <a
-          class="prev cursor-pointer absolute top-1/2 w-auto hover:bg-black "
+          class="prev cursor-pointer float-left  w-auto hover:bg-black "
           @click="plusSlides(-1)"
           >&lt;</a
         >
         <a
-          class="next cursor-pointer absolute top-1/2 w-auto right-0  hover:bg-black "
+          class="next cursor-pointer float-right   w-auto  hover:bg-black "
           @click="plusSlides(1)"
           >&gt;</a
         >
@@ -121,6 +121,9 @@ export default {
 .dot {
   margin: 0 2px;
   transition: background-color 0.6s ease;
+}
+.active {
+  background-color: #717171;
 }
 
 /* Fading animation */
