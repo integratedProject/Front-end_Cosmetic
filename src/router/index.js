@@ -9,6 +9,7 @@ import Cart from '@/views/Cart.vue'
 import AddProduct from '@/views/Add-product.vue'
 import Employees from '@/views/Employees.vue'
 import ErrorPage from '@/views/Error-page.vue'
+import AllProduct from '@/views/AllProduct.vue'
 
 const routes = [
   {
@@ -55,6 +56,11 @@ const routes = [
     path: '/employees',
     name: 'Employees',
     component:Employees
+  },
+  {
+    path: '/all-product',
+    name: 'All-product',
+    component: AllProduct
   },
   {
     path: '/:catchNotMatchPath(.*)',

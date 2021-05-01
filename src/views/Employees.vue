@@ -1,5 +1,5 @@
 <template>
-  <!-- insert navbar  -->
+  
   <div class="w-full">
     <div class="grid grid-cols-3 gap-4">
       <div class="Pic mt-10 ">
@@ -16,7 +16,7 @@
         <p>62130500020</p>
         <a
           href="https://github.com/Yanika44%22"
-          class="border-b border-black border-opacity-0 px-2 hover:border-opacity-100 hover:text-gray-600"
+          class=" px-2 hover:underline  hover:text-gray-600"
           >Git link</a
         >
       </div>
@@ -25,7 +25,7 @@
         <p>62130500079</p>
         <a
           href="https://github.com/Pungpeee%22"
-          class="border-b border-black border-opacity-0 px-2 hover:border-opacity-100 hover:text-gray-600"
+          class=" px-2 hover:underline hover:text-gray-600"
           >Git link</a
         >
       </div>
@@ -34,10 +34,11 @@
         <p>62130500083</p>
         <a
           href="https://github.com/Nurse01%22"
-          class="border-b border-black border-opacity-0 px-2 hover:border-opacity-100 hover:text-gray-600"
+          class=" px-2 hover:underline hover:text-gray-600"
           >Git link</a
         >
       </div>
     </div>
+    <footer-component></footer-component>
   </div>
 </template>

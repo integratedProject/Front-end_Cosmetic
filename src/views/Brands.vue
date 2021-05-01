@@ -33,13 +33,12 @@
 </template>
 <script>
 import Brand from "@/components/Brand.vue";
-import AddProduct from "@/components/AddProduct.vue";
+
 
 export default {
   name: "Brands",
   components: {
-    Brand,
-    AddProduct
+    Brand
 
   },
 

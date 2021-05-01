@@ -1,7 +1,6 @@
 <template>
   <div id="home" class="box-border">
     <!-- Banner -->
-
     <div class="slideshow-container max-w-full relative m-auto px-40">
       <div class="mySlides fade" v-for="(slide, index) in slides" :key="index">
         <img :src="slide" class="w-full align-middle" />
@@ -21,7 +20,7 @@
     </div>
     <br />
 
-    <div style="text-align:center">
+    <div style="text-align:center ">
       <span
         class="dot cursor-pointer w-3 h-3 bg-gray-300 rounded-2xl inline-block hover:bg-gray-500"
         @click="currentSlide(1)"
@@ -36,7 +35,13 @@
       ></span>
     </div>
 
+    <div class="m-10">
+      <router-link to="/all-product" class="btn ">
+        Shop Now
+      </router-link>
+    </div>
     <about></about>
+    <footer-component></footer-component>
   </div>
 </template>
 
@@ -59,7 +64,6 @@ export default {
     };
   },
   methods: {
-   
     plusSlides(index) {
       this.showSlides((this.slideIndex += index));
     },
@@ -110,7 +114,6 @@ export default {
 
 /* Position the "next button" to the right */
 .next {
-
   border-radius: 3px 0 0 3px;
 }
 
@@ -146,11 +149,9 @@ export default {
   }
 }
 
-/* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev,
-  .next,
-  .text {
+  .next {
     font-size: 11px;
   }
 }
