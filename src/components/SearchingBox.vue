@@ -1,5 +1,5 @@
 <template>
-  <div id="searchingBox">
+  <div id="searchingBox" class="mx-40">
     <form>
       <div class="flex justify-around rounded-full p-2 border-2 border-black hover:border-gray-600">
         <input

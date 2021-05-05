@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class=" text-lg">
+  <div id="app" class=" text-lg ">
     <!-- navigationBar -->
     <div
       id="nav"
@@ -16,7 +16,7 @@
           >HOME</router-link
         >
         <router-link
-          to="/brands"
+          to="/product"
           class=" border-b border-black border-opacity-0 px-2 hover:border-opacity-100 hover:text-gray-600 "
           >PRODUCT</router-link
         >
@@ -72,11 +72,9 @@
   color:white;
   background-color:  rgb(209, 213, 219);
 }
+
 </style>
 <script>
-
-
-
 export default {
   name: "App",
 

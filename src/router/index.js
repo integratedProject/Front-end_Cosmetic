@@ -2,14 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import Brands from '@/views/Brands.vue'
 import MakeupTypes from '@/views/Makeup-types.vue'
-import Lipstick from '@/views/Lipstick.vue'
-import Blush from '@/views/Blush.vue'
-import EyeShadow from '@/views/Eye-shadow.vue'
 import Cart from '@/views/Cart.vue'
 import AddProduct from '@/views/Add-product.vue'
 import Employees from '@/views/Employees.vue'
 import ErrorPage from '@/views/Error-page.vue'
 import AllProduct from '@/views/AllProduct.vue'
+import Product from '@/views/Product.vue'
 
 const routes = [
   {
@@ -20,47 +18,37 @@ const routes = [
   {
     path: '/brands',
     name: 'Brands',
-    component:Brands
+    component: Brands
   },
   {
     path: '/makeup-types',
     name: 'Makeup-types',
-    component:MakeupTypes
-  },
-  {
-    path: '/lipstick',
-    name: 'Lipstick',
-    component:Lipstick
-  },
-  {
-    path: '/blush',
-    name: 'Blush',
-    component:Blush
-  },
-  {
-    path: '/eye-shadow',
-    name: 'Eye-shadow',
-    component:EyeShadow
+    component: MakeupTypes
   },
   {
     path: '/cart',
     name: 'Cart',
-    component:Cart
+    component: Cart
   },
   {
     path: '/add-product',
     name: 'Add-product',
-    component:AddProduct
+    component: AddProduct
   },
   {
     path: '/employees',
     name: 'Employees',
-    component:Employees
+    component: Employees
   },
   {
-    path: '/all-product',
+    path: '/product',
     name: 'All-product',
     component: AllProduct
+  },
+  {
+    path: '/product/:id',
+    name: 'product',
+    component: Product 
   },
   {
     path: '/:catchNotMatchPath(.*)',

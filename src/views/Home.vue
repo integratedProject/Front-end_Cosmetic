@@ -5,7 +5,7 @@
       <div class="mySlides fade" v-for="(slide, index) in slides" :key="index">
         <img :src="slide" class="w-full align-middle" />
       </div>
-      <div class="text-white font-bold  w-full transform -translate-y-60">
+      <!-- <div class="text-white font-bold  w-full transform -translate-y-60">
         <a
           class="prev cursor-pointer float-left  w-auto hover:bg-black "
           @click="plusSlides(-1)"
@@ -16,7 +16,7 @@
           @click="plusSlides(1)"
           >&gt;</a
         >
-      </div>
+      </div> -->
     </div>
     <br />
 
@@ -36,7 +36,7 @@
     </div>
 
     <div class="m-10">
-      <router-link to="/all-product" class="btn ">
+      <router-link to="/product" class="btn ">
         Shop Now
       </router-link>
     </div>
@@ -61,12 +61,13 @@ export default {
         "https://www.dior.com/couture/var/dior/storage/images/14214663/27-int-EN/highlighter-luminizer2_1440_1200.jpg",
       ],
       slideIndex: 1,
+      interval: null,
     };
   },
   methods: {
-    plusSlides(index) {
-      this.showSlides((this.slideIndex += index));
-    },
+    // plusSlides(index) {
+    //   this.showSlides((this.slideIndex += index));
+    // },
 
     currentSlide(index) {
       this.showSlides((this.slideIndex = index));
@@ -94,6 +95,14 @@ export default {
   },
   mounted() {
     this.showSlides(this.slideIndex);
+
+    this.interval = setInterval(() => {
+      this.showSlides(++this.slideIndex);
+      // console.log(this.slideIndex);
+    }, 5000);
+  },
+  unmounted() {
+    clearInterval(this.interval);
   },
 };
 </script>
@@ -103,19 +112,19 @@ export default {
   display: none;
 }
 /* Next & previous buttons */
-.prev,
+/* .prev,
 .next {
   padding: 16px;
   margin-top: -22px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
-}
+} */
 
 /* Position the "next button" to the right */
-.next {
+/* .next {
   border-radius: 3px 0 0 3px;
-}
+} */
 
 /* The dots/bullets/indicators */
 .dot {
@@ -152,10 +161,10 @@ export default {
   }
 }
 
-@media only screen and (max-width: 300px) {
+/* @media only screen and (max-width: 300px) {
   .prev,
   .next {
     font-size: 11px;
   }
-}
+} */
 </style>
