@@ -15,7 +15,7 @@
         <p>Yanika Putorn</p>
         <p>62130500020</p>
         <a
-          href="https://github.com/Yanika44%22"
+          href="https://github.com/Yanika44"
           class=" px-2 hover:underline  hover:text-gray-600"
           >Git link</a
         >
@@ -24,7 +24,7 @@
         <p>Wanisara Khamracha</p>
         <p>62130500079</p>
         <a
-          href="https://github.com/Pungpeee%22"
+          href="https://github.com/Pungpeee"
           class=" px-2 hover:underline hover:text-gray-600"
           >Git link</a
         >
@@ -33,7 +33,7 @@
         <p>Warathaya Rattachai</p>
         <p>62130500083</p>
         <a
-          href="https://github.com/Nurse01%22"
+          href="https://github.com/Nurse01"
           class=" px-2 hover:underline hover:text-gray-600"
           >Git link</a
         >

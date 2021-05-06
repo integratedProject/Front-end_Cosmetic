@@ -1,5 +1,5 @@
 <template>
-  <div id="AllProduct">
+  <div id="AllProduct" >
     <searching-box></searching-box>
     <div
       class="mt-5 border-2 border-black px-10 py-5  w-1/6 mx-auto md:text-sm"
@@ -15,9 +15,9 @@
         <div>
           Sort by
         </div>
-        <div class="text-left ">
+        <div class="text-left  ">
           <ul>
-            <li>{{ sort }} &nabla;</li>
+            <li class="border-2 px-2 group-hover:border-black">{{ sort }}  <span class="space-x-2" >&nabla;</span></li>
             <li
               class="transition ease-in duration-500 transform -translate-y-7 opacity-0  group-hover:opacity-100 group-hover:translate-y-0"
             >
@@ -71,10 +71,10 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-3 text-2xl">
+    <div class="grid grid-cols-3 text-2xl md:text-xl ">
       <ul v-for="item in allProduct" :key="item.productid">
         <router-link :to="`/product/${item.productid}`">
-          <div class="p-10 m-20  ">
+          <div class="p-10 m-20 border-2 border-white hover:shadow-md delay-200 duration-400">
             <img :src="item.productimage" />
             {{ item.productname }}
           </div>
