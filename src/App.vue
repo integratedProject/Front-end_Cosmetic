@@ -30,16 +30,13 @@
           class=" border-b border-black border-opacity-0 px-2 hover:border-opacity-100 hover:text-gray-600"
           >EMPLOYEES</router-link
         >
-      
-       
       </div>
-      
     </div>
-
-  <router-view />
-     
   </div>
-
+  <div>
+    
+  </div>
+  <router-view @add="addToCart" :productCart="productCart"/>
 </template>
 
 <style>
@@ -51,10 +48,10 @@
   padding-right: 2.5rem;
 }
 
-#nav.scrolled {
+/* #nav.scrolled {
   @apply p-1;
   transition-duration: 500ms;
-}
+} */
 #titleName {
   margin-bottom: 2.5rem;
 }
@@ -67,22 +64,26 @@
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
-.btn:hover{
+.btn:hover {
   transition-duration: 300ms;
-  color:white;
-  background-color:  rgb(209, 213, 219);
+  color: white;
+  background-color: rgb(209, 213, 219);
 }
-
 </style>
 <script>
+import axios from "axios";
 export default {
   name: "App",
+  
 
   data() {
     return {
       view: {
         atTopOfPage: true,
       },
+      url: "http://localhost:5000/",
+      productCart:[],
+
     };
   },
   methods: {
@@ -93,9 +94,33 @@ export default {
         this.view.atTopOfPage = true;
       }
     },
+    addToCart(product) {
+      this.productCart.push(product);
+      console.log(this.productCart);
+    },
+    
+    
+    fetchProduct() {
+      let path = this.url + "product"
+      console.log(path);
+      axios.get(path).then((response) =>{
+        this.productCart= response.data;
+        return response.data;
+      })
+      .then((data)=>{
+        this.productCart =data;
+        console.log(this.productCart)  
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+    },
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
+  },
+  mounted() {
+    this.fetchProduct();
   },
 };
 </script>

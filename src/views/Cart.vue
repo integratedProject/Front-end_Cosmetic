@@ -14,7 +14,7 @@
           </div>
 
           <div class="text-left m-5">
-            <p>{{ cart.productname }}</p>
+            <p>{{ cart.productName }}</p>
             <p>{{ cart.price }}</p>
             <p>x quantity</p>
             <!-- <p>{{ cart.description }}</p> -->  
@@ -74,6 +74,9 @@ export default {
         });
     },
   },
+  props:{
+    productCart: Object
+  },
   computed: {
     getTotalPrice() {
       let price = 0;
@@ -83,6 +86,9 @@ export default {
 
       return price;
     },
+  },
+  mounted() {
+    this.cartList = this.productCart;
   },
 };
 </script>

@@ -9,7 +9,15 @@
 
     <!-- data  -->
     <div class="text-left grid grid-cols-2">
-      <h1 class="text-3xl col-span-2">{{ productname }}</h1>
+      <div class="flex  col-span-2 space-x-6">
+        <h1 class="text-3xl col-span-2">{{ productname }}</h1>
+        <div class="flex space-x-2">
+          <img src="@/assets/edit.png" class="h-6" />
+
+          <img src="@/assets/delete.png" @click="deleteProduct()" class="h-6" />
+        </div>
+      </div>
+
       <p class="col-span-2">{{ description }}</p>
       <p class="text-2xl">{{ price }} &#xE3F;</p>
       <p class="mr-20">Launch: {{ launch_date }}</p>
@@ -43,12 +51,21 @@
         <div class="">COLOR: {{ color }}</div>
         <div class="grid grid-cols-5 gap-4">
           <!-- เหลือ add click -->
-          <span class="colorDot" :style="{backgroundColor : item.code}" v-for="item in colors" :key="item.id" @click="setColorName(item.name)"></span>
+          <span
+            class="colorDot"
+            :style="{ backgroundColor: item.code }"
+            v-for="item in colors"
+            :key="item.id"
+            @click="setColorName(item.name)"
+          ></span>
         </div>
       </div>
       <div>
         Total :
       </div>
+      <button @click="addProduct">
+        cart
+      </button>
     </div>
   </div>
 </template>
@@ -76,6 +93,8 @@ export default {
       brand_brandid: "B02",
       quantity: 1,
       color: "none",
+      url: "http://localhost:5000/",
+
       colors: [
         {
           id: "col001",
@@ -151,10 +170,24 @@ export default {
         this.quantity--;
       }
     },
-    setColorName(name){
+    setColorName(name) {
       this.color = name;
-
-    }
+    },
+    addProduct() {
+      this.$emit("add", { id: this.$route.params.id, quantity: this.quantity });
+      // this.$router.push("/cart");
+    },
+    async deleteProduct() {
+      console.log(this.productid);
+      // try {
+      //   await fetch(this.url + "product/" + this.productid, {
+      //     method: "DELETE",
+      //   });
+      //   this.$router.push({ name: "All-product" });
+      // } catch (error) { 
+      //   console.error(error);
+      // }
+    },
   },
 };
 </script>

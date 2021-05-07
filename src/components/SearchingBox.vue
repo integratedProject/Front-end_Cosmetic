@@ -10,11 +10,11 @@
           class="w-4/5 focus:outline-none px-2 text-sm "
         />
         
-          <button v-if="isSearching" type="button" class="w-8 mx-1 ">
+          <button v-if="isSearching" type="button" class="w-8 mx-1 focus:outline-none">
             <img src="@/assets/clear.png" />
           </button>
       
-        <button v-else type="submit" class="w-8 mx-1">
+        <button v-else type="submit" class="w-8 mx-1 focus:outline-none">
           <img src="@/assets/search.png" />
         </button>
       </div>
