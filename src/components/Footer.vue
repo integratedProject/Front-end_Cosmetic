@@ -10,19 +10,19 @@
 
       <div id="iconSocial" class="grid grid-cols-3 gap-6">
         <div
-          class="rounded-full h-24 w-24 flex items-center border-4 border-gray-500 hover:border-black "
+          class="rounded-full h-28 w-28 flex items-center opacity-75 cursor-pointer"
         >
-          <img class="p-3 w-32" src="@/assets/facebook.png" />
+          <a href="https://www.facebook.com/chanel"><img class="p-3 w-32" src="@/assets/facebook.png" /></a>
         </div>
         <div
-          class="rounded-full h-24 w-24 flex items-center border-4 border-gray-500 hover:border-black"
+          class="rounded-full h-28 w-28 flex items-center opacity-75 cursor-pointer"
         >
-          <img class="p-3 w-32" src="@/assets/instagram.png" />
+          <a href="https://www.instagram.com/narsissist/"><img class="p-3 w-32" src="@/assets/instagram.png" /></a>
         </div>
         <div
-          class="rounded-full h-24 w-24 flex items-center border-4 border-gray-500 hover:border-black"
+          class="rounded-full h-28 w-28 flex items-center opacity-75 cursor-pointer"
         >
-          <img class="p-3" src="@/assets/twitter.png" />
+          <a href="https://twitter.com/Dior?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img class="p-3" src="@/assets/twitter.png" /></a>
         </div>
       </div>
     </div>
