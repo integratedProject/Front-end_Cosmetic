@@ -1,45 +1,33 @@
 <template>
-  <div id="home" class="box-border">
+  <div id="home">
     <!-- Banner -->
-    <div class="slideshow-container max-w-full relative m-auto px-40">
+    <div class="slideshow-container max-w-full relative m-auto w-4/5">
       <div class="mySlides fade" v-for="(slide, index) in slides" :key="index">
         <img :src="slide" class="w-full align-middle" />
       </div>
-      <!-- <div class="text-white font-bold  w-full transform -translate-y-60">
-        <a
-          class="prev cursor-pointer float-left  w-auto hover:bg-black "
-          @click="plusSlides(-1)"
-          >&lt;</a
-        >
-        <a
-          class="next cursor-pointer float-right   w-auto  hover:bg-black "
-          @click="plusSlides(1)"
-          >&gt;</a
-        >
-      </div> -->
     </div>
     <br />
 
-    <div style="text-align:center ">
+    <div class="text-center hidden sm:block">
       <span
-        class="dot cursor-pointer w-3 h-3 bg-gray-300 rounded-2xl inline-block hover:bg-gray-500"
+        class="dot cursor-pointer w-3 h-3 bg-gray-300  inline-block hover:bg-gray-500"
         @click="currentSlide(1)"
       ></span>
       <span
-        class="dot cursor-pointer w-3 h-3 bg-gray-300 rounded-2xl inline-block hover:bg-gray-500"
+        class="dot cursor-pointer w-3 h-3 bg-gray-300  inline-block hover:bg-gray-500"
         @click="currentSlide(2)"
       ></span>
       <span
-        class="dot cursor-pointer w-3 h-3 bg-gray-300 rounded-2xl inline-block hover:bg-gray-500"
+        class="dot cursor-pointer w-3 h-3 bg-gray-300  inline-block hover:bg-gray-500"
         @click="currentSlide(3)"
       ></span>
     </div>
-
-    <div class="m-10">
-      <router-link to="/product" class="btn ">
+    <div class="mt-4">
+      <router-link to="/product" class="btn px-5 py-0.5">
         Shop Now
       </router-link>
     </div>
+
     <about></about>
     <footer-component></footer-component>
   </div>
@@ -111,20 +99,6 @@ export default {
 .mySlides {
   display: none;
 }
-/* Next & previous buttons */
-/* .prev,
-.next {
-  padding: 16px;
-  margin-top: -22px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-} */
-
-/* Position the "next button" to the right */
-/* .next {
-  border-radius: 3px 0 0 3px;
-} */
 
 /* The dots/bullets/indicators */
 .dot {
@@ -160,11 +134,4 @@ export default {
     opacity: 1;
   }
 }
-
-/* @media only screen and (max-width: 300px) {
-  .prev,
-  .next {
-    font-size: 11px;
-  }
-} */
 </style>

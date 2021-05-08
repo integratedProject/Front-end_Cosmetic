@@ -69,11 +69,14 @@
             id="colors"
             class="m-3 border-black border-b-2 focus:outline-none"
             v-model.trim="entered.color"
+            multiple
           >
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="opel">Opel</option>
-            <option value="audi">Audi</option>
+            <option
+              v-for="item in product.colors"
+              :key="item.colorId"
+              :value="item.colorId"
+              >{{ item.colorName }}</option
+            >
           </select>
           <p v-if="invalid.colorInput" class="text-red-500">
             Please enter product color!
@@ -96,7 +99,13 @@
         <!-- picture -->
         <div class="m-5">
           <label class="label" for="picture">PRODUCT PICTURE : </label>
-          <input type="file" id="picture" accept="image/*,.pdf" class="m-3 " required/>
+          <input
+            type="file"
+            id="picture"
+            accept="image/*,.pdf"
+            class="m-3 "
+            required
+          />
           <!-- @input="entered.picture" -->
           <p v-if="invalid.pictureInput" class="text-red-500">
             Please enter product picture!
@@ -114,6 +123,7 @@
 export default {
   data() {
     return {
+      color: "none",
       entered: {
         id: "",
         name: "",
@@ -211,6 +221,9 @@ export default {
           console.log(error);
         });
     },
+  },
+  props: {
+    products: Array,
   },
 };
 </script>

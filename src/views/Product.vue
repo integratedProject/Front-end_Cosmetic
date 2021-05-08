@@ -1,16 +1,14 @@
 <template>
-  <div id="product" class="grid grid-cols-2 gap-6">
+  <div id="product" class="lg:grid lg:grid-cols-2 flex flex-col gap-6 lg:mt-24 mt-12">
     <!-- picture  -->
     <div>
-      <!-- test path -->
-      <img :src="productimage" />
-      {{ productid }}
+      <img :src="url + 'product/photo/' + product.productImage" />
     </div>
 
     <!-- data  -->
-    <div class="text-left grid grid-cols-2">
+    <div class="text-left grid grid-cols-2 gap-y-8 mx-5 gap-x-4">
       <div class="flex  col-span-2 space-x-6">
-        <h1 class="text-3xl col-span-2">{{ productname }}</h1>
+        <h1 class="text-3xl col-span-2">{{ product.productName }}</h1>
         <div class="flex space-x-2">
           <img src="@/assets/edit.png" class="h-6" />
 
@@ -18,29 +16,31 @@
         </div>
       </div>
 
-      <p class="col-span-2">{{ description }}</p>
-      <p class="text-2xl">{{ price }} &#xE3F;</p>
-      <p class="mr-20">Launch: {{ launch_date }}</p>
+      <p class="col-span-2">{{ product.description }}</p>
+      <p class="text-2xl">{{ product.price }} &#xE3F;</p>
+      <p>Launch: {{ product.launchDate }}</p>
       <!-- add to cart  -->
       <div>
         Add to cart
-        <div class="flex m-3 ml-0 h-12">
+        <div class="flex m-3 ml-0 h-12 w-full flex-wrap">
           <img src="@/assets/shopping-cart.png" class="h-full mx-3" />
           <div class="border-2 border-black px-5 text-2xl flex items-center">
             {{ quantity }}
           </div>
 
-          <div
-            class="h-6 w-6 rounded-full border-2 border-gray-500 flex justify-center items-center hover:border-black m-3 mr-1 cursor-pointer"
-            @click="decrement"
-          >
-            <div class="leading-none mt-1">-</div>
-          </div>
-          <div
-            class="h-6 w-6 rounded-full border-2 border-gray-500 flex justify-center items-center hover:border-black m-3 ml-1 cursor-pointer"
-            @click="increment"
-          >
-            <div class="leading-none mt-1">+</div>
+          <div class="flex">
+            <div
+              class="h-6 w-6 rounded-full border-2 border-gray-500 flex justify-center items-center hover:border-black m-3 mr-1 cursor-pointer"
+              @click="decrement"
+            >
+              <div class="leading-none mt-1">-</div>
+            </div>
+            <div
+              class="h-6 w-6 rounded-full border-2 border-gray-500 flex justify-center items-center hover:border-black m-3 ml-1 cursor-pointer"
+              @click="increment"
+            >
+              <div class="leading-none mt-1">+</div>
+            </div>
           </div>
         </div>
       </div>
@@ -50,13 +50,12 @@
         </div>
         <div class="">COLOR: {{ color }}</div>
         <div class="grid grid-cols-5 gap-4">
-          <!-- เหลือ add click -->
           <span
             class="colorDot"
-            :style="{ backgroundColor: item.code }"
-            v-for="item in colors"
-            :key="item.id"
-            @click="setColorName(item.name)"
+            :style="{ backgroundColor: item.codeColor }"
+            v-for="item in product.colors"
+            :key="item.colorId"
+            @click="setColorName(item.colorName)"
           ></span>
         </div>
       </div>
@@ -82,81 +81,19 @@ export default {
   name: "Product",
   data() {
     return {
-      productid: this.$route.params.id,
-      productname: "Rouge Dior",
-      productimage:
-        "https://www.dior.com/beauty/version-5.1610097138806/resize-image/ep/460/498/90/0/%252FY0172009%252FV007%252FY0172009_C017500999_E01_GHC.jpg?imwidth=460",
-      price: "1750.00",
-      launch_date: "20/02/1997",
-      description:
-        "Rouge Dior is the Dior lipstick with couture colors. True floral lip care, it is enriched with red peony and pomegranate flower extracts of natural origin. Rouge Dior dresses the lips in 75 bold colors with satin, matte, metallic or velvet finishes. Long-wear lipstick that ensures 16 hours of comfort* on the lips.",
-      brand_brandid: "B02",
-      quantity: 1,
+      // productid: this.$route.params.id,
       color: "none",
-      url: "http://localhost:5000/",
+      url: "http://13.67.44.15/cosmeticbe/",
 
-      colors: [
-        {
-          id: "col001",
-          name: "red",
-          code: "#FF0000",
-        },
-        {
-          id: "col002",
-          name: "blue",
-          code: "#0000FF",
-        },
-        {
-          id: "col003",
-          name: "green",
-          code: "#00FF00",
-        },
-        {
-          id: "col001",
-          name: "red",
-          code: "#FF0000",
-        },
-        {
-          id: "col002",
-          name: "blue",
-          code: "#0000FF",
-        },
-        {
-          id: "col003",
-          name: "green",
-          code: "#00FF00",
-        },
-        {
-          id: "col001",
-          name: "red",
-          code: "#FF0000",
-        },
-        {
-          id: "col002",
-          name: "blue",
-          code: "#0000FF",
-        },
-        {
-          id: "col003",
-          name: "green",
-          code: "#00FF00",
-        },
-        {
-          id: "col001",
-          name: "red",
-          code: "#FF0000",
-        },
-        {
-          id: "col002",
-          name: "blue",
-          code: "#0000FF",
-        },
-        {
-          id: "col003",
-          name: "green",
-          code: "#00FF00",
-        },
-      ],
+      product: {
+        productId: null,
+        productName: null,
+        productImage: null,
+        price: null,
+        launchDate: null,
+        description: null,
+      },
+      quantity: 1,
     };
   },
   methods: {
@@ -184,10 +121,27 @@ export default {
       //     method: "DELETE",
       //   });
       //   this.$router.push({ name: "All-product" });
-      // } catch (error) { 
+      // } catch (error) {
       //   console.error(error);
       // }
     },
+  },
+  props: {
+    products: Array,
+  },
+  mounted() {
+    console.log(this.products);
+    this.products.forEach((product) => {
+      if (product.productId == this.$route.params.id) {
+        console.log(product);
+        this.product = product;
+      }
+    });
+
+    if (this.product.productId == null) {
+      // console.log("sent to error page")
+      this.$router.push("/pageNotFound");
+    }
   },
 };
 </script>

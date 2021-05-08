@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import Brands from '@/views/Brands.vue'
-import MakeupTypes from '@/views/Makeup-types.vue'
 import Cart from '@/views/Cart.vue'
 import AddProduct from '@/views/Add-product.vue'
 import Employees from '@/views/Employees.vue'
@@ -20,11 +19,7 @@ const routes = [
     name: 'Brands',
     component: Brands
   },
-  {
-    path: '/makeup-types',
-    name: 'Makeup-types',
-    component: MakeupTypes
-  },
+  
   {
     path: '/cart',
     name: 'Cart',

@@ -1,15 +1,15 @@
 <template>
-  <div id="app" class=" text-lg ">
+  <div id="app" class="sm:text-xl text-sm sm:px-32 px-0">
     <!-- navigationBar -->
     <div
       id="nav"
       :class="{ scrolled: !view.atTopOfPage }"
-      class="sticky top-0 p-10 bg-white duration-500 z-10 "
+      class="sticky bg-white duration-500 z-10  "
     >
-      <div id="titleName" class="border-b-2 border-black mx-40 mb-10 ">
-        <span class="text-3xl">COSMETIC</span>
+      <div id="titleName" class="border-b-2 border-black mx-auto mb-5 sm:mb-10  mt-5">
+        <span class="xl:text-3xl sm:text-2xl text-xl">COSMETIC</span>
       </div>
-      <div class="flex justify-center items-center space-x-28 ">
+      <div class="flex justify-between items-center text-xs sm:text-lg">
         <router-link
           to="/"
           class=" border-b border-black border-opacity-0 px-2 hover:border-opacity-100 hover:text-gray-600 "
@@ -32,11 +32,12 @@
         >
       </div>
     </div>
+    <router-view
+      @add="addToCart"
+      :productCart="productCart"
+      :products="products"
+    />
   </div>
-  <div>
-    
-  </div>
-  <router-view @add="addToCart" :productCart="productCart"/>
 </template>
 
 <style>
@@ -44,25 +45,18 @@
   font-family: Javanese Text;
   text-align: center;
   color: black;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 
 /* #nav.scrolled {
   @apply p-1;
   transition-duration: 500ms;
 } */
-#titleName {
-  margin-bottom: 2.5rem;
-}
+
 .btn {
   border-color: black;
   border-width: 2px;
   border-radius: 9999px;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+
 }
 .btn:hover {
   transition-duration: 300ms;
@@ -74,16 +68,17 @@
 import axios from "axios";
 export default {
   name: "App",
-  
 
   data() {
     return {
       view: {
         atTopOfPage: true,
       },
-      url: "http://localhost:5000/",
-      productCart:[],
-
+      url: "http://13.67.44.15/cosmeticbe/",
+      // url:" http://localhost:5000/",
+      productCart: [],
+      products: [],
+      product: null,
     };
   },
   methods: {
@@ -98,24 +93,23 @@ export default {
       this.productCart.push(product);
       console.log(this.productCart);
     },
-    
-    
+
     fetchProduct() {
-      let path = this.url + "product"
-      console.log(path);
-      axios.get(path).then((response) =>{
-        this.productCart= response.data;
-        return response.data;
-      })
-      .then((data)=>{
-        this.productCart =data;
-        console.log(this.productCart)  
-      })
-      .catch((error)=>{
-        console.log(error);
-      })
+      axios
+        .get(this.url + "product")
+        .then((response) => {
+          this.products = response.data;
+          return response.data;
+        })
+        .then((data) => {
+          this.products = data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
+
   created() {
     window.addEventListener("scroll", this.handleScroll);
   },
