@@ -1,6 +1,6 @@
 <template>
   <div id="AllProduct">
-    <!-- <searching-box></searching-box> -->
+    
     <div
       class="mt-5 border-2 border-black  px-10 py-5 w-max mx-auto md:text-sm"
     >
@@ -8,74 +8,6 @@
     </div>
     <div id="filter" class="flex justify-around w-full mt-3">
       <div>{{ sum }}products</div>
-      <!-- Sort  -->
-      <div class="flex space-x-2 group cursor-pointer">
-        <div>
-          Sort by
-        </div>
-        <div class="text-left  ">
-          <ul>
-            <li class="px-2 border-b-2 border-gray-300  ">
-              {{ sort }} <span class="space-x-2">&nabla;</span>
-            </li>
-            <li
-              class="transition ease-in duration-500 transform -translate-y-7 opacity-0  group-hover:opacity-100 group-hover:translate-y-0"
-            >
-              <input
-                type="radio"
-                id="HighToLow"
-                value="PriceHighToLow"
-                v-model="sort"
-                class="hidden  "
-                @click="changeSort(highToLow)"
-              />
-              <label for="HighToLow">Price High to Low</label>
-            </li>
-            <li
-              class="transition ease-in duration-500 transform -translate-y-7 opacity-0 delay-150 group-hover:opacity-100 group-hover:translate-y-0"
-            >
-              <input
-                type="radio"
-                id="LowToHigh"
-                value="PriceLowToHigh"
-                v-model="sort"
-                class="hidden"
-                @click="changeSort(lowToHigh)"
-              />
-              <label for="LowToHigh">Price Low to High</label>
-            </li>
-            <li
-              class="transition ease-in duration-500 transform -translate-y-7 opacity-0 delay-300 group-hover:opacity-100 group-hover:translate-y-0"
-            >
-              <input
-                type="radio"
-                id="New"
-                value="New Arrival"
-                v-model="sort"
-                class="hidden"
-                @click="changeSort(newArrival)"
-              />
-              <label for="New">New Arrival</label>
-            </li>
-            <li
-              class="transition ease-in duration-500 transform -translate-y-7 opacity-0 delay-500 group-hover:opacity-100 group-hover:translate-y-0"
-            >
-              <input
-                type="radio"
-                id="Character"
-                value="Character"
-                v-model="sort"
-                class="hidden"
-                @click="changeSort(character)"
-              />
-              <label for="Character">Character</label>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    
 
     <div class="lg:grid lg:grid-cols-3 flex flex-col text-2xl md:text-xl ">
       <ul v-for="item in products" :key="item.productId">
@@ -89,10 +21,11 @@
             {{ item.price }} &#xE3F;
           </router-link>
         </div>
-      </ul>
+      </ul> 
     </div>
 
-    <add-product></add-product>
+    <add-product ></add-product>
+    </div>
   </div>
 </template>
 <script>

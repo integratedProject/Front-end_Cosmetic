@@ -37,8 +37,10 @@
     </div>
     <router-view
       @add="addToCart"
+      @edit="editProduct"
       :productCart="productCart"
       :products="products"
+      :productEdited="productEdited"
     />
   </div>
 </template>
@@ -81,6 +83,7 @@ export default {
       productCart: [],
       products: [],
       product: null,
+      productEdited:null,
     };
   },
   methods: {
@@ -94,6 +97,9 @@ export default {
     addToCart(addingProduct) {
       this.productCart = this.productCart.filter(product=>product.productId != addingProduct.productId);
       this.productCart.push(addingProduct);
+    },
+    editProduct(editingProduct){
+      this.productEdited=editingProduct;
     },
 
     fetchProduct() {

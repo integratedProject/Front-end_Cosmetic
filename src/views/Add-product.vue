@@ -10,19 +10,6 @@
         @submit.prevent="submitForm"
         class="lg:mx-28 text-left"
       >
-        <!-- id  -->
-        <div class="m-5">
-          <label class="label" for="id">PRODUCT ID: </label>
-          <input
-            type="text"
-            id="id"
-            v-model.trim="entered.id"
-            class="m-3 border-black border-b-2 focus:outline-none"
-          />
-          <p v-if="invalid.idInput" class="text-red-500">
-            Please enter product id!
-          </p>
-        </div>
         <!-- name  -->
         <div class="m-5">
           <label class="label" for="name">PRODUCT NAME : </label>
@@ -36,6 +23,52 @@
             Please enter product name!
           </p>
         </div>
+        <!-- image -->
+        <div class="m-5">
+          <label class="label" for="image">PRODUCT image : </label>
+          <input
+            type="file"
+            id="image"
+            accept="image/*,.pdf"
+            class="m-3 "
+            @input="fileChange"
+            required
+          />
+          <!-- @input="entered.image" -->
+          <p v-if="invalid.imageInput" class="text-red-500">
+            Please enter product image!
+          </p>
+        </div>
+        <!-- price  -->
+        <div class="m-5">
+          <label class="label" for="price">PRODUCT PRICE : </label>
+          <input
+            type="number"
+            id="price"
+            step="any"
+            v-model.trim="entered.price"
+            class="m-3 border-black border-b-2 focus:outline-none"
+          />
+          <p v-if="invalid.priceInput" class="text-red-500">
+            Please enter product price!
+          </p>
+        </div>
+
+        <!-- launch date -->
+        <div class="m-5">
+          <label class="label" for="date">PRODUCT DATE : </label>
+          <input
+            type="date"
+            id="date"
+            placeholder="dd-mm-yyyy"
+            v-model.trim="entered.launchDate"
+            class="m-3 border-black border-b-2 focus:outline-none"
+          />
+          <p v-if="invalid.dateInput" class="text-red-500">
+            Please enter product date!
+          </p>
+        </div>
+
         <!-- description -->
         <div class="m-5">
           <label class="label" for="description">PRODUCT DESCRIPTION : </label>
@@ -49,68 +82,44 @@
             Please enter product description!
           </p>
         </div>
-        <!-- price  -->
-        <div class="m-5">
-          <label class="label" for="price">PRODUCT PRICE : </label>
-          <input
-            type="text"
-            id="price"
-            v-model.trim="entered.price"
+
+        <!-- brand  -->
+        <div>
+          <label class="label" for="brand">PRODUCT BRAND : </label>
+          <select
+            id="brand"
             class="m-3 border-black border-b-2 focus:outline-none"
-          />
-          <p v-if="invalid.priceInput" class="text-red-500">
-            Please enter product price!
+            v-model.trim="entered.brand"
+          >
+            <option v-for="item in brand" :key="item.brandId" :value="item">{{
+              item.brandName
+            }}</option>
+          </select>
+          <p v-if="invalid.brandInput" class="text-red-500">
+            Please enter product brand!
           </p>
         </div>
-        <!-- color  -->
-        <!-- <div class="m-5">
+
+        <!-- colors  -->
+        <div class="m-5">
           <label class="label" for="color">PRODUCT COLOR : </label>
           <select
-            id="colors"
             class="m-3 border-black border-b-2 focus:outline-none"
-            v-model.trim="entered.color"
+            v-model.trim="entered.colors"
             multiple
           >
             <option
-              v-for="item in product.colors"
-              :key="item.colorId"
-              :value="item.colorId"
-              >{{ item.colorName }}</option
+              v-for="color in colors"
+              :key="color.colorId"
+              :value="color"
+              >{{ color.colorName }}</option
             >
           </select>
           <p v-if="invalid.colorInput" class="text-red-500">
             Please enter product color!
           </p>
-        </div> -->
-        <!-- launch date -->
-        <div class="m-5">
-          <label class="label" for="date">PRODUCT DATE : </label>
-          <input
-            type="date"
-            id="date"
-            placeholder="dd-mm-yyyy"
-            v-model.trim="entered.date"
-            class="m-3 border-black border-b-2 focus:outline-none"
-          />
-          <p v-if="invalid.dateInput" class="text-red-500">
-            Please enter product date!
-          </p>
         </div>
-        <!-- picture -->
-        <div class="m-5">
-          <label class="label" for="picture">PRODUCT PICTURE : </label>
-          <input
-            type="file"
-            id="picture"
-            accept="image/*,.pdf"
-            class="m-3 "
-            required
-          />
-          <!-- @input="entered.picture" -->
-          <p v-if="invalid.pictureInput" class="text-red-500">
-            Please enter product picture!
-          </p>
-        </div>
+
         <div class="flex justify-center">
           <input type="submit" class="btn px-5 py-0.5" />
         </div>
@@ -120,95 +129,117 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      color: "none",
+      // color: "none",
       entered: {
-        id: "",
+        // id: "",
         name: "",
-        description: "",
+        image: "",
         price: "",
-        color: "",
-        date: "",
-        picture: "",
+        launchDate: "",
+        description: "",
+        brand: null,
+        colors: [],
       },
       invalid: {
-        idInput: false,
+        // idInput: false,
         nameInput: false,
-        descriptionInput: false,
+        imageInput: false,
         priceInput: false,
-        colorInput: false,
-        dateInput: false,
-        pictureInput: false,
+        launchDateInput: false,
+        descriptionInput: false,
+        brandInput: false,
+        colorsInput: false,
       },
-      url: "http://localhost:5000/Product ",
+      // url: "http://localhost:5000/Product ",
+      url: "http://13.67.44.15/cosmeticbe/",
       isEditing: false,
+      editProductData: [],
+      colors: [],
+      brand: []
     };
   },
   methods: {
     submitForm() {
-      this.invalid.idInput =
-        this.entered.id === undefined || this.entered.id === "" ? true : false;
+      // this.invalid.idInput =
+      //   this.entered.id === undefined || this.entered.id === "" ? true : false;
       this.invalid.nameInput =
         this.entered.name === undefined || this.entered.name === ""
           ? true
           : false;
-      this.invalid.descriptionInput =
-        this.entered.description === undefined ||
-        this.entered.description === ""
+      this.invalid.imageInput =
+        this.entered.image === undefined || this.entered.image === ""
           ? true
           : false;
       this.invalid.priceInput =
         this.entered.price === undefined || this.entered.price === ""
           ? true
           : false;
-      this.invalid.colorInput =
-        this.entered.color === undefined || this.entered.color === ""
-          ? true
-          : false;
-      this.invalid.dateInput =
-        this.entered.date === undefined || this.entered.date === ""
-          ? true
-          : false;
-      this.invalid.pictureInput =
-        this.entered.picture === undefined || this.entered.picture === ""
+      this.invalid.launchDateInput =
+        this.entered.launchDate === undefined || this.entered.launchDate === ""
           ? true
           : false;
 
-      // console.log(`${this.name}`);
-      // console.log(`${this.description}`);
-      // console.log(`${this.price}`);
-      // console.log(`${this.color}`);
-      // console.log(`${this.date}`);
-      // console.log(`${this.picture}`);
+      this.invalid.descriptionInput =
+        this.entered.description === undefined ||
+        this.entered.description === ""
+          ? true
+          : false;
+      this.invalid.brandInput =
+        this.entered.brand === undefined || this.entered.brand === ""
+          ? true
+          : false;
+
+      this.invalid.colorsInput =
+        this.entered.colors === undefined || this.entered.colors === ""
+          ? true
+          : false;
+
+      console.log(`${this.entered.name}`);
+      console.log(`${this.entered.image}`);
+      console.log(`${this.entered.price}`);
+      console.log(`${this.entered.launchDate}`);
+      console.log(`${this.entered.description}`);
+      console.log(`${this.entered.brand}`);
+      console.log(`${this.entered.colors}`);
+
       if (this.isEditing) {
         this.editProduct();
       } else {
         this.addProduct();
       }
       this.entered.name = "";
-      this.entered.description = "";
+      this.entered.image = "";
       this.entered.price = "";
-      this.entered.color = "";
-      this.entered.date = "";
-      this.entered.picture = "";
+      this.entered.description = "";
+      this.entered.launchDate = "";
+      this.entered.brand = "";
+      this.entered.colors = "";
     },
     addProduct() {
-      fetch(this.url, {
+      let data = {
+        productName: this.entered.name,
+        productImage: this.entered.image.name,
+        price: this.entered.price,
+        launchDate: this.entered.launchDate,
+        description: this.entered.description,
+        brandId: this.entered.brand,
+        colors: this.entered.colors,
+      };
+      console.log(data);
+      let jsonData = JSON.stringify(data);
+      let blob = new Blob([jsonData], {
+        type: "application/json",
+      });
+      let form = new FormData();
+      form.append("file", this.entered.image);
+      form.append("product", blob);
+      fetch(this.url + "product/add ", {
         method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          id: this.entered.id,
-          name: this.entered.name,
-          description: this.entered.description,
-          price: this.entered.price,
-          color: this.entered.color,
-          date: this.entered.date,
-          picture: this.entered.picture,
-        }),
+        body: form,
       })
         .then((response) => {
           if (response.ok) {
@@ -221,9 +252,84 @@ export default {
           console.log(error);
         });
     },
+    async editProduct() {
+      let data = {
+        productName: this.entered.name,
+        productImage: this.entered.image.name,
+        price: this.entered.price,
+        launchDate: this.entered.launchDate,
+        description: this.entered.description,
+        brandId: this.entered.brand,
+        colors: this.entered.colors,
+      };
+      console.log(data);
+      let jsonData = JSON.stringify(data);
+      let blob = new Blob([jsonData], {
+        type: "application/json",
+      });
+      let form = new FormData();
+      form.append("file", this.entered.image);
+      form.append("product", blob);
+      fetch(this.url + "product/edit/" + this.productEdited.productId, {
+        method: "PUT",
+        body: form,
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log("data saved");
+          } else {
+            throw new Error("Could not save data!");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    fetchColor() {
+      axios
+        .get(this.url + "color")
+        .then((res) => res.data)
+        .then((data) => {
+          this.colors = data;
+        });
+    },
+    fetchBrand() {
+      axios
+        .get(this.url + "brand")
+        .then((res) => res.data)
+        .then((data) => {
+          this.brand = data;
+        });
+    },
+    fileChange(e) {
+      this.entered.image = e.target.files[0];
+      // console.log(this.entered.image.name);
+    },
+  },
+  mounted() {
+    this.fetchColor();
+    this.fetchBrand();
+    this.editProductData = this.editingProduct;
+    
+    if (this.productEdited != null) {
+      this.isEditing = true;
+
+      console.log(this.productEdited);
+      this.entered.name = this.productEdited.productName;
+      this.entered.price = this.productEdited.price;
+      this.entered.launchDate = this.productEdited.launchDate;
+      this.entered.description = this.productEdited.description;
+      this.entered.brand = this.productEdited.brandId;
+      this.entered.colors = this.productEdited.colors;
+      
+    }
   },
   props: {
     products: Array,
+    productEdited: Object,
   },
+  updated(){
+    console.log(this.entered.colors);
+  }
 };
 </script>

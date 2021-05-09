@@ -13,9 +13,17 @@
       <div class="flex  col-span-2 space-x-6">
         <h1 class="text-3xl col-span-2">{{ product.productName }}</h1>
         <div class="flex md:space-x-2 space-x-0.5">
-          <img src="@/assets/edit.png" class="h-6" />
+          <img
+            src="@/assets/edit.png"
+            @click="editButton()"
+            class="h-6 cursor-pointer"
+          />
 
-          <img src="@/assets/delete.png" @click="deleteProduct()" class="h-6" />
+          <img
+            src="@/assets/delete.png"
+            @click="deleteButton()"
+            class="h-6 cursor-pointer"
+          />
         </div>
       </div>
 
@@ -54,7 +62,7 @@
         <div>COLOR: {{ color }}</div>
         <div class="grid grid-cols-5 gap-4">
           <span
-            class="colorDot"
+            class="colorDot cursor-pointer"
             :style="{ backgroundColor: item.codeColor }"
             v-for="item in product.colors"
             :key="item.colorId"
@@ -68,7 +76,7 @@
       <div>
         Total :
       </div>
-      <button @click="addProduct">
+      <button @click="addProduct" class="btn px-5 py-0.5 focus:outline-none">
         cart
       </button>
     </div>
@@ -129,16 +137,23 @@ export default {
         this.isSelectedColor = true;
       }
     },
-    async deleteProduct() {
-      console.log(this.productid);
-      // try {
-      //   await fetch(this.url + "product/" + this.productid, {
-      //     method: "DELETE",
-      //   });
-      //   this.$router.push({ name: "All-product" });
-      // } catch (error) {
-      //   console.error(error);
-      // }
+    async deleteButton() {
+      console.log(this.product.productId);
+      try {
+        
+        await fetch(this.url + "product/" + this.product.productId, {
+          method: "DELETE",
+        });
+        // this.product = this.product.filter((item)=> item.id !== deleteId); 
+        this.$router.push({ name: "All-product" });
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    editButton() {
+      console.log("edit func");
+      this.$emit("edit", this.product);
+      this.$router.push("/add-product");
     },
   },
   props: {
