@@ -1,5 +1,8 @@
 <template>
-  <div id="product" class="lg:grid lg:grid-cols-2 flex flex-col gap-6 lg:mt-24 mt-12">
+  <div
+    id="product"
+    class="lg:grid lg:grid-cols-2 flex flex-col gap-6 lg:mt-24 mt-12"
+  >
     <!-- picture  -->
     <div>
       <img :src="url + 'product/photo/' + product.productImage" />
@@ -9,7 +12,7 @@
     <div class="text-left grid grid-cols-2 gap-y-8 mx-5 gap-x-4">
       <div class="flex  col-span-2 space-x-6">
         <h1 class="text-3xl col-span-2">{{ product.productName }}</h1>
-        <div class="flex space-x-2">
+        <div class="flex md:space-x-2 space-x-0.5">
           <img src="@/assets/edit.png" class="h-6" />
 
           <img src="@/assets/delete.png" @click="deleteProduct()" class="h-6" />
@@ -45,10 +48,10 @@
         </div>
       </div>
       <div class="flex flex-col justify-start ">
-        <div class="">
+        <div>
           Select Color
         </div>
-        <div class="">COLOR: {{ color }}</div>
+        <div>COLOR: {{ color }}</div>
         <div class="grid grid-cols-5 gap-4">
           <span
             class="colorDot"
@@ -57,6 +60,9 @@
             :key="item.colorId"
             @click="setColorName(item.colorName)"
           ></span>
+        </div>
+        <div class="text-red-500" v-if="isSelectedColor">
+          Please select color
         </div>
       </div>
       <div>
@@ -94,6 +100,7 @@ export default {
         description: null,
       },
       quantity: 1,
+      isSelectedColor: false,
     };
   },
   methods: {
@@ -109,10 +116,18 @@ export default {
     },
     setColorName(name) {
       this.color = name;
+      this.isSelectedColor = false;
     },
     addProduct() {
-      this.$emit("add", { id: this.$route.params.id, quantity: this.quantity });
-      // this.$router.push("/cart");
+      if (this.color != "none") {
+        let addingProduct = this.product;
+        addingProduct.quantity = this.quantity;
+        addingProduct.color = this.color;
+        this.$emit("add", addingProduct);
+        this.$router.push("/cart");
+      } else {
+        this.isSelectedColor = true;
+      }
     },
     async deleteProduct() {
       console.log(this.productid);
@@ -130,10 +145,8 @@ export default {
     products: Array,
   },
   mounted() {
-    console.log(this.products);
     this.products.forEach((product) => {
       if (product.productId == this.$route.params.id) {
-        console.log(product);
         this.product = product;
       }
     });

@@ -1,34 +1,45 @@
 <template>
   <!-- insert navbar  -->
-  <div class="border-2 border-black px-10 py-5  w-1/6 mx-auto md:text-sm">
+  <div
+    class="border-2 border-black px-10 lg:py-5 py-2   lg:w-1/6 mx-auto w-max  md:text-sm"
+  >
     YOUR CART
   </div>
 
-  <div class="flex justify-center items-start">
+  <div class="lg:flex justify-center items-start">
     <!-- List Order -->
     <div class="box-border ">
-      <div v-for="cart in cartList" v-bind:key="cart.productid">
+      <div v-for="cart in cartList" :key="cart.productId">
         <div class="grid grid-cols-2">
-          <div >
-            <img v-bind:src="cart.productimage" class="w-full" />
+          <div>
+            <img
+              :src="url + 'product/photo/' + cart.productImage"
+              class="w-full"
+            />
           </div>
-
           <div class="text-left m-5">
             <p>{{ cart.productName }}</p>
+            <p>{{cart.color}}</p>
             <p>{{ cart.price }}</p>
-            <p>x quantity</p>
-            <!-- <p>{{ cart.description }}</p> -->  
+            <p>{{ cart.quantity }}</p>
+
           </div>
         </div>
       </div>
     </div>
     <!-- Order Summary -->
-    <div class="border-2 border-black bg-gray-300 p-5 flex  flex-col min-w-max">
+    <div
+      class="border-2 border-black bg-gray-300 p-5 flex  flex-col min-w-max m-5 lg:m-0  "
+    >
       ORDER SUMMARY:
       <div class="bg-white ">
         <div v-for="cart in cartList" v-bind:key="cart.productid">
           <div class="flex justify-between m-5 space-x-6">
-            <p>{{ cart.productname }}</p>
+            <div>
+               <p>{{ cart.productName }}</p>
+               <p class="font-light leading-none ">x{{cart.quantity}}</p>
+            </div>
+           
             <p>{{ cart.price }}</p>
           </div>
         </div>
@@ -52,6 +63,7 @@ export default {
     return {
       cartList: [],
       productURL: "http://localhost:5000/product",
+       url: "http://13.67.44.15/cosmeticbe/",
     };
   },
   methods: {
@@ -74,14 +86,15 @@ export default {
         });
     },
   },
-  props:{
-    productCart: Object
+  props: {
+    productCart: Object,
   },
   computed: {
+
     getTotalPrice() {
       let price = 0;
       this.cartList.forEach((cart) => {
-        price += parseFloat(cart.price);
+        price += parseFloat(cart.price * cart.quantity);
       });
 
       return price;
@@ -89,6 +102,7 @@ export default {
   },
   mounted() {
     this.cartList = this.productCart;
+    // console.log(this.cartList);
   },
 };
 </script>

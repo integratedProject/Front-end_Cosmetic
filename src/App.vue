@@ -6,10 +6,13 @@
       :class="{ scrolled: !view.atTopOfPage }"
       class="sticky bg-white duration-500 z-10  "
     >
-      <div id="titleName" class="border-b-2 border-black mx-auto mb-5 sm:mb-10  mt-5">
+      <div
+        id="titleName"
+        class="border-b-2 border-black mx-auto mb-5 sm:mb-10  mt-5"
+      >
         <span class="xl:text-3xl sm:text-2xl text-xl">COSMETIC</span>
       </div>
-      <div class="flex justify-between items-center text-xs sm:text-lg">
+      <div class="flex justify-between items-center text-xs sm:text-lg mb-5">
         <router-link
           to="/"
           class=" border-b border-black border-opacity-0 px-2 hover:border-opacity-100 hover:text-gray-600 "
@@ -56,7 +59,6 @@
   border-color: black;
   border-width: 2px;
   border-radius: 9999px;
-
 }
 .btn:hover {
   transition-duration: 300ms;
@@ -89,9 +91,9 @@ export default {
         this.view.atTopOfPage = true;
       }
     },
-    addToCart(product) {
-      this.productCart.push(product);
-      console.log(this.productCart);
+    addToCart(addingProduct) {
+      this.productCart = this.productCart.filter(product=>product.productId != addingProduct.productId);
+      this.productCart.push(addingProduct);
     },
 
     fetchProduct() {

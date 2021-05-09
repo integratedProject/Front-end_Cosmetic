@@ -1,6 +1,6 @@
 <template>
   <div id="add-product">
-    <div class="border-2 border-black px-8 py-5  w-1/6 mx-auto md:text-sm">
+    <div class="border-2 border-black px-8 py-5  w-max mx-auto md:text-sm">
       NEW PRODUCT
     </div>
     <!-- form  -->
@@ -8,7 +8,7 @@
       <form
         name="add-form"
         @submit.prevent="submitForm"
-        class="mx-28 text-left"
+        class="lg:mx-28 text-left"
       >
         <!-- id  -->
         <div class="m-5">
@@ -63,7 +63,7 @@
           </p>
         </div>
         <!-- color  -->
-        <div class="m-5">
+        <!-- <div class="m-5">
           <label class="label" for="color">PRODUCT COLOR : </label>
           <select
             id="colors"
@@ -81,7 +81,7 @@
           <p v-if="invalid.colorInput" class="text-red-500">
             Please enter product color!
           </p>
-        </div>
+        </div> -->
         <!-- launch date -->
         <div class="m-5">
           <label class="label" for="date">PRODUCT DATE : </label>
@@ -112,7 +112,7 @@
           </p>
         </div>
         <div class="flex justify-center">
-          <input type="submit" class="btn" />
+          <input type="submit" class="btn px-5 py-0.5" />
         </div>
       </form>
     </div>

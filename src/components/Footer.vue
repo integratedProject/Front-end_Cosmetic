@@ -8,7 +8,7 @@
         FOLLOW US
       </div>
 
-      <div id="iconSocial" class="flex justify-between">
+      <div id="iconSocial" class="flex justify-between lg:justify-center">
         <div
           class="rounded-full h-28 w-28 flex items-center opacity-75 cursor-pointer"
         >
