@@ -233,6 +233,7 @@ export default {
         .then((response) => {
           if (response.ok) {
             console.log("data saved");
+         
             this.$emit("addNewProduct", data);
           } else {
             throw new Error("Could not save data!");
@@ -266,6 +267,7 @@ export default {
       })
         .then((response) => {
           if (response.ok) {
+               alert("edit complete")
             console.log("data saved");
             this.$router.push({ name: "All-product" });
           } else {

@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="sm:text-xl text-sm sm:px-32 px-0">
+    
     <!-- navigationBar -->
     <div
       id="nav"
