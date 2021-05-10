@@ -86,7 +86,7 @@ export default {
 
     this.interval = setInterval(() => {
       this.showSlides(++this.slideIndex);
-      // console.log(this.slideIndex);
+    
     }, 5000);
   },
   unmounted() {

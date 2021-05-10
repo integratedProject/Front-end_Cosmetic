@@ -1,16 +1,16 @@
 <template>
   <!-- insert navbar  -->
   <div
-    class="border-2 border-black px-10 lg:py-5 py-2   lg:w-1/6 mx-auto w-max  md:text-sm"
+    class="border-2 border-black px-5 lg:py-5 py-2   lg:w-1/6 mx-auto w-max  md:text-sm"
   >
     YOUR CART
   </div>
 
-  <div class="lg:flex justify-center items-start">
+  <div class="lg:flex justify-center items-start my-3">
     <!-- List Order -->
     <div class="box-border ">
       <div v-for="cart in cartList" :key="cart.productId">
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-2 ">
           <div>
             <img
               :src="url + 'product/photo/' + cart.productImage"
@@ -20,8 +20,8 @@
           <div class="text-left m-5">
             <p>{{ cart.productName }}</p>
             <p>{{cart.color}}</p>
-            <p>{{ cart.price }}</p>
-            <p>{{ cart.quantity }}</p>
+            <p>{{ cart.price }}  &#xE3F;</p>
+            <p>Total : {{ cart.quantity }}</p>
 
           </div>
         </div>
@@ -53,38 +53,13 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "product",
-  created() {
-    this.fetchCart();
-  },
   data() {
     return {
       cartList: [],
-      productURL: "http://localhost:5000/product",
        url: "http://13.67.44.15/cosmeticbe/",
     };
-  },
-  methods: {
-    fetchCart() {
-      axios
-        .get(this.productURL)
-        .then((response) => {
-          this.cartList = response.data;
-
-          // console.log(response.data);
-
-          return response.data;
-        })
-        .then((data) => {
-          this.cartList = data;
-          // console.log(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
   },
   props: {
     productCart: Object,

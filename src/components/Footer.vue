@@ -12,17 +12,17 @@
         <div
           class="rounded-full h-28 w-28 flex items-center opacity-75 cursor-pointer"
         >
-          <a href="https://www.facebook.com/chanel"><img class="w-4/5" src="@/assets/facebook.png" /></a>
+          <a href="https://www.facebook.com/chanel"><img class="w-4/5" src="@/assets/social/facebook.png" /></a>
         </div>
         <div
           class="rounded-full h-28 w-28 flex items-center opacity-75 cursor-pointer"
         >
-          <a href="https://www.instagram.com/narsissist/"><img class="w-4/5" src="@/assets/instagram.png" /></a>
+          <a href="https://www.instagram.com/narsissist/"><img class="w-4/5" src="@/assets/social/instagram.png" /></a>
         </div>
         <div
           class="rounded-full h-28 w-28 flex items-center opacity-75 cursor-pointer"
         >
-          <a href="https://twitter.com/Dior?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img class="w-4/5" src="@/assets/twitter.png" /></a>
+          <a href="https://twitter.com/Dior?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img class="w-4/5" src="@/assets/social/twitter.png" /></a>
         </div>
       </div>
     </div>

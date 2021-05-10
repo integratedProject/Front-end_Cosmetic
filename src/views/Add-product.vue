@@ -84,7 +84,7 @@
         </div>
 
         <!-- brand  -->
-        <div>
+        <div class="m-5">
           <label class="label" for="brand">PRODUCT BRAND : </label>
           <select
             id="brand"
@@ -115,6 +115,7 @@
               >{{ color.colorName }}</option
             >
           </select>
+          <p class="text-gray-500 ml-3">Hold down the Ctrl or Command button to select multiple options.</p>
           <p v-if="invalid.colorInput" class="text-red-500">
             Please enter product color!
           </p>
@@ -193,14 +194,6 @@ export default {
           ? true
           : false;
 
-      console.log(`${this.entered.name}`);
-      console.log(`${this.entered.image}`);
-      console.log(`${this.entered.price}`);
-      console.log(`${this.entered.launchDate}`);
-      console.log(`${this.entered.description}`);
-      console.log(`${this.entered.brand}`);
-      console.log(`${this.entered.colors}`);
-
       if (this.isEditing) {
         this.editProduct();
       } else {
@@ -230,6 +223,7 @@ export default {
         type: "application/json",
       });
       let form = new FormData();
+      console.log(this.entered.image);
       form.append("file", this.entered.image);
       form.append("product", blob);
       fetch(this.url + "product/add ", {
@@ -265,7 +259,7 @@ export default {
       });
       let form = new FormData();
       form.append("file", this.entered.image);
-      form.append("product", blob);
+      form.append("newProduct", blob);
       fetch(this.url + "product/edit/" + this.productEdited.productId, {
         method: "PUT",
         body: form,
@@ -273,6 +267,7 @@ export default {
         .then((response) => {
           if (response.ok) {
             console.log("data saved");
+            this.$router.push({ name: "All-product" });
           } else {
             throw new Error("Could not save data!");
           }
@@ -299,7 +294,7 @@ export default {
     },
     fileChange(e) {
       this.entered.image = e.target.files[0];
-      // console.log(this.entered.image.name);
+      
     },
   },
   mounted() {
@@ -310,7 +305,7 @@ export default {
     if (this.productEdited != null) {
       this.isEditing = true;
 
-      console.log(this.productEdited);
+      
       this.entered.name = this.productEdited.productName;
       this.entered.image = this.productEdited.productImage;
       this.entered.price = this.productEdited.price;

@@ -26,9 +26,9 @@
           />
         </div>
       </div>
-      <p class="text-gray-500 mx-2">{{product.brandId.brandName}}</p>
+      <p class="text-gray-500 mx-2">{{ product.brandId.brandName }}</p>
       <p class="col-span-2">{{ product.description }}</p>
-      <p class="text-2xl">{{ product.price }} &#xE3F;</p>
+      <p class="text-2xl">{{ product.price }}</p>
       <p>Launch: {{ product.launchDate }}</p>
       <!-- add to cart  -->
       <div>
@@ -73,9 +73,7 @@
           Please select color
         </div>
       </div>
-      <div>
-        Total :
-      </div>
+
       <button @click="addProduct" class="btn px-5 py-0.5 focus:outline-none">
         cart
       </button>
@@ -94,7 +92,7 @@
 export default {
   name: "Product",
   data() {
-    return {   
+    return {
       color: "none",
       url: "http://13.67.44.15/cosmeticbe/",
 
@@ -106,10 +104,9 @@ export default {
         launchDate: null,
         description: null,
         brandId: {
-           brandId: null,
+          brandId: null,
           brandName: null,
-         
-        }
+        },
       },
       quantity: 1,
       isSelectedColor: false,
@@ -142,14 +139,17 @@ export default {
       }
     },
     async deleteButton() {
-      try {
-        await fetch(this.url + "product/" + this.product.productId, {
-          method: "DELETE",
-        });
-      
-        this.$emit("deletedProduct", this.product.productId);
-      } catch (error) {
-        console.error(error);
+      let confirmDelete = confirm("Do you want to delete ?");
+      if (confirmDelete) {
+        try {
+          await fetch(this.url + "product/" + this.product.productId, {
+            method: "DELETE",
+          });
+
+          this.$emit("deletedProduct", this.product.productId);
+        } catch (error) {
+          console.error(error);
+        }
       }
     },
     editButton() {
