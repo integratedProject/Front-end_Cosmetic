@@ -10,7 +10,9 @@
         id="titleName"
         class="border-b-2 border-black mx-auto mb-5 sm:mb-10  mt-5"
       >
-        <span class="xl:text-3xl sm:text-2xl text-xl">COSMETIC</span>
+        <router-link to="/">
+          <span class="xl:text-3xl sm:text-2xl text-xl">COSMETIC</span>
+        </router-link>
       </div>
       <div class="flex justify-between items-center text-xs sm:text-lg mb-5">
         <router-link
@@ -38,6 +40,9 @@
     <router-view
       @add="addToCart"
       @edit="editProduct"
+      @exitPage="exitPage"
+      @deletedProduct="deletedProduct"
+      @addNewProduct="addNewProduct"
       :productCart="productCart"
       :products="products"
       :productEdited="productEdited"
@@ -52,10 +57,10 @@
   color: black;
 }
 
-/* #nav.scrolled {
+#nav.scrolled {
   @apply p-1;
   transition-duration: 500ms;
-} */
+}
 
 .btn {
   border-color: black;
@@ -83,7 +88,7 @@ export default {
       productCart: [],
       products: [],
       product: null,
-      productEdited:null,
+      productEdited: null,
     };
   },
   methods: {
@@ -95,11 +100,13 @@ export default {
       }
     },
     addToCart(addingProduct) {
-      this.productCart = this.productCart.filter(product=>product.productId != addingProduct.productId);
+      this.productCart = this.productCart.filter(
+        (product) => product.productId != addingProduct.productId
+      );
       this.productCart.push(addingProduct);
     },
-    editProduct(editingProduct){
-      this.productEdited=editingProduct;
+    editProduct(editingProduct) {
+      this.productEdited = editingProduct;
     },
 
     fetchProduct() {
@@ -115,6 +122,19 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    exitPage() {
+      this.productEdited = null;
+    },
+    deletedProduct(deletingProduct) {
+      this.products = this.products.filter(
+        (product) => product.productId != deletingProduct
+      );
+      this.$router.push({ name: "All-product" });
+    },
+    addNewProduct(addingNewProduct) {
+      this.products.push(addingNewProduct);
+      this.$router.push({ name: "All-product" });
     },
   },
 

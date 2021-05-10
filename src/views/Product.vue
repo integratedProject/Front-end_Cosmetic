@@ -26,7 +26,7 @@
           />
         </div>
       </div>
-
+      <p class="text-gray-500 mx-2">{{product.brandId.brandName}}</p>
       <p class="col-span-2">{{ product.description }}</p>
       <p class="text-2xl">{{ product.price }} &#xE3F;</p>
       <p>Launch: {{ product.launchDate }}</p>
@@ -94,8 +94,7 @@
 export default {
   name: "Product",
   data() {
-    return {
-      // productid: this.$route.params.id,
+    return {   
       color: "none",
       url: "http://13.67.44.15/cosmeticbe/",
 
@@ -106,6 +105,11 @@ export default {
         price: null,
         launchDate: null,
         description: null,
+        brandId: {
+           brandId: null,
+          brandName: null,
+         
+        }
       },
       quantity: 1,
       isSelectedColor: false,
@@ -138,14 +142,12 @@ export default {
       }
     },
     async deleteButton() {
-      console.log(this.product.productId);
       try {
-        
         await fetch(this.url + "product/" + this.product.productId, {
           method: "DELETE",
         });
-        // this.product = this.product.filter((item)=> item.id !== deleteId); 
-        this.$router.push({ name: "All-product" });
+      
+        this.$emit("deletedProduct", this.product.productId);
       } catch (error) {
         console.error(error);
       }
@@ -163,11 +165,11 @@ export default {
     this.products.forEach((product) => {
       if (product.productId == this.$route.params.id) {
         this.product = product;
+        console.log(this.product);
       }
     });
 
     if (this.product.productId == null) {
-      // console.log("sent to error page")
       this.$router.push("/pageNotFound");
     }
   },

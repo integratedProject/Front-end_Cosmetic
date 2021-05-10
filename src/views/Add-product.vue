@@ -133,9 +133,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      // color: "none",
       entered: {
-        // id: "",
         name: "",
         image: "",
         price: "",
@@ -145,7 +143,6 @@ export default {
         colors: [],
       },
       invalid: {
-        // idInput: false,
         nameInput: false,
         imageInput: false,
         priceInput: false,
@@ -159,13 +156,11 @@ export default {
       isEditing: false,
       editProductData: [],
       colors: [],
-      brand: []
+      brand: [],
     };
   },
   methods: {
     submitForm() {
-      // this.invalid.idInput =
-      //   this.entered.id === undefined || this.entered.id === "" ? true : false;
       this.invalid.nameInput =
         this.entered.name === undefined || this.entered.name === ""
           ? true
@@ -244,6 +239,7 @@ export default {
         .then((response) => {
           if (response.ok) {
             console.log("data saved");
+            this.$emit("addNewProduct", data);
           } else {
             throw new Error("Could not save data!");
           }
@@ -310,26 +306,29 @@ export default {
     this.fetchColor();
     this.fetchBrand();
     this.editProductData = this.editingProduct;
-    
+
     if (this.productEdited != null) {
       this.isEditing = true;
 
       console.log(this.productEdited);
       this.entered.name = this.productEdited.productName;
+      this.entered.image = this.productEdited.productImage;
       this.entered.price = this.productEdited.price;
       this.entered.launchDate = this.productEdited.launchDate;
       this.entered.description = this.productEdited.description;
       this.entered.brand = this.productEdited.brandId;
       this.entered.colors = this.productEdited.colors;
-      
     }
   },
   props: {
     products: Array,
     productEdited: Object,
   },
-  updated(){
+  updated() {
     console.log(this.entered.colors);
-  }
+  },
+  beforeUnmount() {
+    this.$emit("exitPage");
+  },
 };
 </script>

@@ -35,12 +35,9 @@ export default {
 
   data() {
     return {
-      // products: null,
       sort: "none",
       url: "http://13.67.44.15/cosmeticbe/",
-      // products: [],
-      productImage: "",
-      
+      productImage: "",     
     };
   },
   methods: {
